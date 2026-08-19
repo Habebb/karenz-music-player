@@ -73,8 +73,8 @@ body.detail-active-bg {
     place-items: center;
     overflow: hidden;
     isolation: isolate;
-    background-color: #090611;
-    background-image: linear-gradient(rgba(9, 6, 17, 0.58), rgba(9, 6, 17, 0.88)), url('img/bgutama.png');
+    background-color: #070812;
+    background-image: radial-gradient(circle at 78% 22%, rgba(119, 76, 255, 0.28), transparent 26rem), radial-gradient(circle at 18% 82%, rgba(0, 192, 255, 0.16), transparent 24rem), linear-gradient(135deg, #070812 0%, #0c0b1d 52%, #090612 100%);
     background-position: center;
     background-size: cover;
     transition: opacity 0.65s ease, visibility 0.65s ease;
