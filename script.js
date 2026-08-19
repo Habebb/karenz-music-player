@@ -10,6 +10,8 @@ const bodyElement = document.body;
 
 const backgroundVideoContainer = document.querySelector('.video-background-container');
 const backgroundVideo = document.getElementById('backgroundVideo');
+const introScreen = document.getElementById('introScreen');
+const startListeningBtn = document.getElementById('startListeningBtn');
 
 // Elemen untuk Halaman Detail Lagu (tidak akan langsung digunakan saat klik lagu, tapi tetap di-load)
 const detailAlbumArt = document.getElementById('detailAlbumArt');
@@ -1509,6 +1511,18 @@ let isShuffle = false;
 let repeatMode = 0; // 0: no repeat, 1: repeat one, 2: repeat all
 
 // --- Page Navigation ---
+function startListening() {
+    introScreen.classList.add('is-exiting');
+    startListeningBtn.disabled = true;
+
+    window.setTimeout(() => {
+        introScreen.hidden = true;
+        introScreen.classList.remove('is-exiting');
+        startListeningBtn.disabled = false;
+        songListElement.focus({ preventScroll: true });
+    }, 650);
+}
+
 function showHomePage() {
     playerPage.classList.remove('active');
     songDetailPage.classList.remove('active'); // Pastikan detail page disembunyikan
@@ -1878,6 +1892,7 @@ audioPlayer.addEventListener('ended', () => {
 });
 
 // Event Listeners untuk tombol navigasi
+startListeningBtn.addEventListener('click', startListening);
 backToHomeFromDetailBtn.addEventListener('click', showHomePage); // Dari halaman detail ke home
 backToHomeBtn.addEventListener('click', showHomePage); // Dari halaman player ke home
 

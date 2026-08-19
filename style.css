@@ -64,6 +64,178 @@ body.detail-active-bg {
     z-index: 1; /* Di atas video, di bawah konten */
 }
 
+/* Futuristic launch screen */
+.intro-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    background-color: #090611;
+    background-image: linear-gradient(rgba(9, 6, 17, 0.58), rgba(9, 6, 17, 0.88)), url('img/bgutama.png');
+    background-position: center;
+    background-size: cover;
+    transition: opacity 0.65s ease, visibility 0.65s ease;
+}
+
+.intro-screen::before,
+.intro-screen::after {
+    position: absolute;
+    content: '';
+    pointer-events: none;
+}
+
+.intro-screen::before {
+    inset: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    z-index: -1;
+}
+
+.intro-screen::after {
+    top: 12%;
+    right: 8%;
+    width: 10rem;
+    height: 10rem;
+    border: 1px solid rgba(155, 109, 255, 0.5);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1rem rgba(155, 109, 255, 0.04), 0 0 5rem rgba(155, 109, 255, 0.18);
+    z-index: -1;
+}
+
+.intro-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 5rem 5rem;
+    mask-image: linear-gradient(to bottom, transparent, black 35%, transparent);
+    z-index: -1;
+}
+
+.intro-content {
+    width: min(82%, 43rem);
+    animation: intro-rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.intro-kicker,
+.intro-footer {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.intro-kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 0 0 1.5rem;
+}
+
+.intro-kicker span {
+    width: 2.5rem;
+    height: 1px;
+    background: #c49cff;
+    box-shadow: 0 0 1rem #b37aff;
+}
+
+.intro-content h1 {
+    max-width: 8ch;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(3.8rem, 12vw, 8rem);
+    font-weight: 800;
+    line-height: 0.88;
+    letter-spacing: 0;
+}
+
+.intro-content h1 span {
+    display: block;
+    color: #c49cff;
+    font-weight: 300;
+}
+
+.intro-tagline {
+    max-width: 25rem;
+    margin: 2rem 0 2.5rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.start-listening-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 3.5rem;
+    padding: 0.5rem 0.65rem 0.5rem 1.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    backdrop-filter: blur(1rem);
+    transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.start-listening-btn i {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: #c49cff;
+    color: #170d28;
+    transition: transform 0.25s ease;
+}
+
+.start-listening-btn:hover {
+    border-color: rgba(196, 156, 255, 0.8);
+    background: rgba(196, 156, 255, 0.18);
+    box-shadow: 0 0 2rem rgba(196, 156, 255, 0.16);
+    transform: translateY(-3px);
+}
+
+.start-listening-btn:hover i {
+    transform: translateX(0.25rem);
+}
+
+.start-listening-btn:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 5px;
+}
+
+.intro-footer {
+    position: absolute;
+    right: 3rem;
+    bottom: 2rem;
+    margin: 0;
+}
+
+.intro-footer span {
+    margin-left: 1.25rem;
+    color: #c49cff;
+}
+
+.intro-screen.is-exiting {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.intro-screen[hidden] {
+    display: none;
+}
+
+@keyframes intro-rise {
+    from { opacity: 0; transform: translateY(1.5rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* Gaya Umum Halaman */
 .page {
     width: 100%;
